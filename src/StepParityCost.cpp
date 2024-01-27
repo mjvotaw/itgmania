@@ -33,7 +33,21 @@ bool vectorContainsNot(const std::vector<T>& vec, const T& value) {
     });
 }
 
-float StepParityGenerator::getCachedCost(int rowIndex, RString cacheKey)
+
+template <typename T>
+int generateKey(const T& values, int key = 0) {
+    int prime = 7; // Choose a prime number as the base
+
+    // Encode both values and order into the key
+    for (const auto value : values) {
+        key = key * prime + static_cast<int>(value);
+    }
+
+    return key;
+}
+
+
+float StepParityGenerator::getCachedCost(int rowIndex, int cacheKey)
 {
 	if(costCache.find(rowIndex) == costCache.end() || costCache[rowIndex].find(cacheKey) == costCache[rowIndex].end() )
 	{
@@ -45,7 +59,7 @@ float StepParityGenerator::getCachedCost(int rowIndex, RString cacheKey)
 
 void StepParityGenerator::getActionCost(Action *action, std::vector<Row>& rows, int rowIndex)
 {
-	Row row = rows[rowIndex];
+	Row &row = rows[rowIndex];
 	
 	float elapsedTime = action->resultState->second - action->initialState->second;
 	float cost = 0;
@@ -85,17 +99,9 @@ void StepParityGenerator::getActionCost(Action *action, std::vector<Row>& rows, 
 	  }
 	}
 
-	std::vector<StepParity::Foot> cacheKeyEnums = action->initialState->columns;
-	cacheKeyEnums.insert(cacheKeyEnums.end(), action->resultState->columns.begin(), action->resultState->columns.end());
-	cacheKeyEnums.insert(cacheKeyEnums.end(), action->initialState->movedFeet.begin(), action->initialState->movedFeet.end());
-
-	std::vector<RString> cacheKeyStrings;
-	for(StepParity::Foot f: cacheKeyEnums)
-	{
-		cacheKeyStrings.push_back(std::to_string(static_cast<int>(f)));
-	}
-
-	RString cacheKey = join("|", cacheKeyStrings);
+	int cacheKey = generateKey(action->initialState->columns);
+	cacheKey = generateKey(action->resultState->columns, cacheKey);
+	cacheKey = generateKey(action->initialState->movedFeet, cacheKey);
 
 	float cachedCost = getCachedCost(rowIndex, cacheKey);
 	if(cachedCost != -1)
@@ -568,8 +574,9 @@ void StepParityGenerator::getActionCost(Action *action, std::vector<Row>& rows, 
 
 	if (costCache.find(rowIndex) == costCache.end())
 	{
-		costCache[rowIndex] = std::map<RString, float>();
+		costCache[rowIndex] = std::map<int, float>();
 	}
 	exploreCounter++;
 	costCache[rowIndex][cacheKey] = cost;
+	// LOG->Trace("cacheKey: %s, cost: %f", cacheKey.c_str(), cost);
 }

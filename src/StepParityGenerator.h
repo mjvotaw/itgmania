@@ -193,7 +193,7 @@ namespace StepParity {
 	{
 	private:
 		StageLayout layout;
-		std::map<int, std::map<RString, float>> costCache;
+		std::map<int, std::map<int, float>> costCache;
 		int cacheCounter = 0;
 		int exploreCounter = 0;
 		std::map < int, std::vector<std::vector<StepParity::Foot>>> permuteCache;
@@ -219,7 +219,7 @@ namespace StepParity {
 	private:
 		// helper functions
 
-		float getCachedCost(int rowIndex, RString cacheKey);
+		float getCachedCost(int rowIndex, int cacheKey);
 		int getPermuteCacheKey(Row &row);
 		Action *initAction(State *initialState, Row &row, std::vector<Foot> columns);
 		bool bracketCheck(int column1, int column2);
