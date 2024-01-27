@@ -136,11 +136,23 @@ std::vector<Action*> StepParityGenerator::GetPossibleActions(State *initialState
 	Row row = rows[rowIndex];
 	std::vector<StepParity::Foot> blankColumns(4, NONE);
 
-	std::vector<std::vector<StepParity::Foot>> permuteColumns = PermuteColumns(row, blankColumns, 0);
+	std::vector<std::vector<StepParity::Foot>>* permuteColumns = nullptr;
+	int cacheKey = getPermuteCacheKey(row);
+	auto maybePermuteColumns = permuteCache.find(cacheKey);
+	if (maybePermuteColumns != permuteCache.end())
+	{
+		permuteColumns = &maybePermuteColumns->second;
+	}
+	else 
+	{
+		std::vector<std::vector<StepParity::Foot>> computedPermutations = PermuteColumns(row, blankColumns, 0);
+		permuteCache[cacheKey] = computedPermutations;
+		permuteColumns = &permuteCache[cacheKey];
+	}
 
 	std::vector<Action*> actions;
 
-	for(std::vector<StepParity::Foot> columns: permuteColumns)
+	for(const std::vector<StepParity::Foot> &columns: *permuteColumns)
 	{
 		Action *action = initAction(initialState, row, columns);
 		getActionCost(action, rows, rowIndex);
