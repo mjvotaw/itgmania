@@ -27,8 +27,8 @@ public:
 	virtual int GetNextSourceFrame() const;
 	virtual float GetStreamToSourceRatio() const;
 	virtual RString GetError() const;
-
-	void AddSourceChannelToSound( int iFromChannel, int iToChannel );
+	virtual float GetGainAdjust() const;
+	void AddSourceChannelToSound(int iFromChannel, int iToChannel);
 
 private:
 	RageSoundReader_Split( RageSoundSplitterImpl *pImpl ); // create with RageSoundSplitter

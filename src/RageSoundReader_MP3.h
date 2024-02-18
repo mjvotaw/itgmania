@@ -26,7 +26,7 @@ public:
 	int GetSampleRate() const { return SampleRate; }
 	int GetNextSourceFrame() const;
 	bool SetProperty( const RString &sProperty, float fValue );
-
+	float GetGainAdjust() const { return 0.0f; }
 	RageSoundReader_MP3();
 	~RageSoundReader_MP3();
 	RageSoundReader_MP3( const RageSoundReader_MP3 & ); /* not defined; don't use */

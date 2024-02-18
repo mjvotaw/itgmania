@@ -154,6 +154,7 @@ public:
 	unsigned GetNumChannels() const { return 1; }
 	int GetNextSourceFrame() const { return 0; }
 	float GetStreamToSourceRatio() const { return 1.0f; }
+	float GetGainAdjust() const { return 0.0f;  }
 	RString GetError() const { return ""; }
 };
 

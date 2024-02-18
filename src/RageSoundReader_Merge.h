@@ -24,6 +24,7 @@ public:
 	virtual bool SetProperty( const RString &sProperty, float fValue );
 	virtual int GetNextSourceFrame() const { return m_iNextSourceFrame; }
 	virtual float GetStreamToSourceRatio() const { return m_fCurrentStreamToSourceRatio; }
+	virtual float GetGainAdjust() const { return 0.0f; }
 	virtual RString GetError() const { return ""; }
 
 	void AddSound( RageSoundReader *pSound );

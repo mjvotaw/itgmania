@@ -279,6 +279,19 @@ int RageSoundReader_Vorbisfile::GetNextSourceFrame() const
 	return iFrame;
 }
 
+float RageSoundReader_Vorbisfile::GetGainAdjust() const 
+{
+	vorbis_comment * vc = ov_comment(vf, -1);
+	char *maybe_gain = vorbis_comment_query(vc, "REPLAYGAIN_TRACK_GAIN", 0);
+	if(maybe_gain != NULL)
+	{
+		float replayGain = atof(maybe_gain);
+		LOG->Trace("RageSoundReader_Vorbisfile::GetGainAdjust: %f", replayGain);
+		return replayGain > 0 ? 0 : replayGain;
+	}
+	return 0;
+}
+
 RageSoundReader_Vorbisfile::RageSoundReader_Vorbisfile()
 {
 	vf = nullptr;

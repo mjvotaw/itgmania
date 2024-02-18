@@ -22,7 +22,8 @@ public:
 	int GetNextSourceFrame() const;
 	float GetStreamToSourceRatio() const { return m_fRate; }
 	RString GetError() const { return ""; }
-
+	float GetGainAdjust() const { return 0.0f; }
+	
 	/* Return the total number of copies of this sound.  (If 1 is returned,
 	 * this is the last copy.) */
 	int GetReferenceCount() const;

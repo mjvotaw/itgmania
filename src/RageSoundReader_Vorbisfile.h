@@ -19,6 +19,7 @@ public:
 	int GetSampleRate() const;
 	unsigned GetNumChannels() const { return channels; }
 	int GetNextSourceFrame() const;
+	float GetGainAdjust() const;
 	RageSoundReader_Vorbisfile();
 	~RageSoundReader_Vorbisfile();
 	RageSoundReader_Vorbisfile *Copy() const;

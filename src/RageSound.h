@@ -64,6 +64,8 @@ struct RageSoundParams
 	} /** @brief How does the sound stop itself, if it does? */ StopMode;
 
 	bool m_bIsCriticalSound; // "is a sound that should be played even during attract"
+
+	float m_fGainAdjust; // Gain adjust to be applied to audio
 };
 
 struct RageSoundLoadParams

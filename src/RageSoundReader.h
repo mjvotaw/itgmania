@@ -39,6 +39,10 @@ public:
 	virtual int GetNextSourceFrame() const = 0;
 	virtual float GetStreamToSourceRatio() const = 0;
 
+	// Returns a dB value for audio normalization purposes.
+	// This should only return values <= 0
+	virtual float GetGainAdjust() const = 0;
+
 	virtual RString GetError() const = 0;
 	int RetriedRead( float *pBuffer, int iFrames, int *iSourceFrame = nullptr, float *fRate = nullptr );
 };

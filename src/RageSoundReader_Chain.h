@@ -44,6 +44,7 @@ public:
 	int GetNextSourceFrame() const;
 	float GetStreamToSourceRatio() const;
 	RString GetError() const { return ""; }
+	float GetGainAdjust() const { return 0.0f; }
 
 private:
 	int GetSampleRateInternal() const;

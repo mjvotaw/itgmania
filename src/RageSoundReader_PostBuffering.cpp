@@ -16,6 +16,9 @@ RageSoundReader_PostBuffering::RageSoundReader_PostBuffering( RageSoundReader *p
 	RageSoundReader_Filter( pSource )
 {
 	m_fVolume = 1.0f;
+	float fGainAdjust = std::min(0.0f, pSource->GetGainAdjust());
+	
+	m_fAudioNormalizingAdjust = std::min(1.0f, std::max(0.0f, powf(10, (fGainAdjust / 20))));
 }
 
 void RageSoundReader_PostBuffering::SetMasterVolume(float fVolume) {
@@ -35,7 +38,8 @@ int RageSoundReader_PostBuffering::Read( float *pBuf, int iFrames )
 	// Square the master so lower volumes are more sensitive.
 	// This lines up better with perceived volume.
 	float fVolume = m_fVolume * g_fMasterVolume * g_fMasterVolume;
-	fVolume = clamp( fVolume, 0.0f, 1.0f );
+	fVolume = fVolume * m_fAudioNormalizingAdjust;
+	fVolume = clamp(fVolume, 0.0f, 1.0f);
 	g_Mutex.Unlock();
 
 	if( fVolume != 1.0f )

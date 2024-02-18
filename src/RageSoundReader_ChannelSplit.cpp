@@ -90,6 +90,7 @@ unsigned RageSoundReader_Split::GetNumChannels() const { return m_iNumOutputChan
 int RageSoundReader_Split::GetNextSourceFrame() const { return m_iPositionFrame; }
 float RageSoundReader_Split::GetStreamToSourceRatio() const { return 1.0f; }
 RString RageSoundReader_Split::GetError() const { return m_pImpl->m_pSource->GetError(); }
+float RageSoundReader_Split::GetGainAdjust() const { return m_pImpl->m_pSource->GetGainAdjust(); }
 
 RageSoundReader_Split::RageSoundReader_Split( RageSoundSplitterImpl *pImpl )
 {

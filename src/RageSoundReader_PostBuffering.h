@@ -16,6 +16,7 @@ public:
 
 private:
 	float m_fVolume;
+	float m_fAudioNormalizingAdjust;
 };
 
 #endif

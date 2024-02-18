@@ -24,6 +24,7 @@ public:
 	virtual float GetStreamToSourceRatio() const { return m_pSource->GetStreamToSourceRatio(); }
 	virtual RageSoundReader *GetSource() { return &*m_pSource; }
 	virtual RString GetError() const { return m_pSource->GetError(); }
+	virtual float GetGainAdjust() const { return m_pSource->GetGainAdjust(); }
 
 protected:
 	HiddenPtr<RageSoundReader> m_pSource;

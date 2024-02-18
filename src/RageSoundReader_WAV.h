@@ -27,7 +27,7 @@ public:
 	~RageSoundReader_WAV();
 	RageSoundReader_WAV( const RageSoundReader_WAV & ); /* not defined; don't use */
 	RageSoundReader_WAV *Copy() const;
-
+	float GetGainAdjust() const { return 0.0f;  }
 	struct WavData
 	{
 		std::int32_t m_iDataChunkPos, m_iDataChunkSize, m_iExtraFmtPos, m_iSampleRate, m_iFormatTag;
