@@ -223,7 +223,8 @@ void ScreenDebugOverlay::Init()
 		g_Mappings.debugButton[i++] = DeviceInput(DEVICE_KEYBOARD, KEY_Cp);
 		g_Mappings.debugButton[i++] = DeviceInput(DEVICE_KEYBOARD, KEY_Ca);
 		g_Mappings.debugButton[i++] = DeviceInput(DEVICE_KEYBOARD, KEY_Cs);
-		g_Mappings.debugButton[i++] = DeviceInput(DEVICE_KEYBOARD, KEY_Cd);
+		g_Mappings.debugButton[i++] = DeviceInput(DEVICE_KEYBOARD, KEY_Ck);
+		g_Mappings.debugButton[i++] = DeviceInput(DEVICE_KEYBOARD, KEY_Cl);
 		g_Mappings.pageButton[DeviceInput(DEVICE_KEYBOARD, KEY_F5)] = 0;
 		g_Mappings.pageButton[DeviceInput(DEVICE_KEYBOARD, KEY_F6)] = 1;
 		g_Mappings.pageButton[DeviceInput(DEVICE_KEYBOARD, KEY_F7)] = 2;
@@ -571,6 +572,9 @@ static LocalizedString FILL_PROFILE_STATS	( "ScreenDebugOverlay", "Fill Profile 
 static LocalizedString SEND_NOTES_ENDED	( "ScreenDebugOverlay", "Send Notes Ended" );
 static LocalizedString RESET_KEY_MAP ("ScreenDebugOverlay", "Reset key mapping to default");
 static LocalizedString MUTE_ACTIONS ("ScreenDebugOverlay", "Mute actions");
+static LocalizedString NORMALIZE_AUDIO ("ScreenDebugOverlay", "Toggle Audio Normalization");
+static LocalizedString LUFS_UP ("ScreenDebugOverlay", "LUFS Up");
+static LocalizedString LUFS_DOWN ("ScreenDebugOverlay", "LUFS Down");
 static LocalizedString RELOAD			( "ScreenDebugOverlay", "Reload" );
 static LocalizedString RESTART			( "ScreenDebugOverlay", "Restart" );
 static LocalizedString SCREEN_ON		( "ScreenDebugOverlay", "Send On To Screen" );
@@ -1002,6 +1006,18 @@ class DebugLineMuteActions : public IDebugLine
 	}
 };
 
+class DebugLineToggleAudioNormalization: public IDebugLine
+{
+	virtual RString GetDisplayTitle() { return NORMALIZE_AUDIO.GetValue(); }
+	virtual RString GetDisplayValue() { return RString(); }
+	virtual bool IsEnabled() { return PREFSMAN->m_NormalizeAudio; }
+	virtual void DoAndLog( RString &sMessageOut)
+	{
+		PREFSMAN->m_NormalizeAudio.Set(!PREFSMAN->m_NormalizeAudio);
+		IDebugLine::DoAndLog(sMessageOut );
+	}
+};
+
 class DebugLineReloadCurrentScreen : public IDebugLine
 {
 	virtual RString GetDisplayTitle() { return RELOAD.GetValue(); }
@@ -1370,8 +1386,7 @@ DECLARE_ONE( DebugLineForceCrash );
 DECLARE_ONE( DebugLineUptime );
 DECLARE_ONE( DebugLineResetKeyMapping );
 DECLARE_ONE( DebugLineMuteActions );
-
-
+DECLARE_ONE(DebugLineToggleAudioNormalization);
 /*
  * (c) 2001-2005 Chris Danford, Glenn Maynard
  * All rights reserved.

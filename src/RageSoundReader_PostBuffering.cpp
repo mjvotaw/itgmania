@@ -3,7 +3,7 @@
 #include "RageSoundUtil.h"
 #include "RageThreads.h"
 #include "RageUtil.h"
-
+#include "PrefsManager.h"
 /*
  * This filter is normally inserted after extended buffering, implementing
  * properties that do not seek the sound, allowing these properties to be
@@ -16,9 +16,19 @@ RageSoundReader_PostBuffering::RageSoundReader_PostBuffering( RageSoundReader *p
 	RageSoundReader_Filter( pSource )
 {
 	m_fVolume = 1.0f;
-	float fGainAdjust = std::min(0.0f, pSource->GetGainAdjust());
-	
-	m_fAudioNormalizingAdjust = std::min(1.0f, std::max(0.0f, powf(10, (fGainAdjust / 20))));
+	if(PREFSMAN->m_NormalizeAudio.Get())
+	{
+		float fGainAdjust = std::min(0.0f, pSource->GetGainAdjust());
+		// Convert fGainAdjust from dB to amplitude, and make sure it gives us a sane value.
+		// To avoid making anything louder, we don't want to get a value > 1. The goal here is to
+		// just make really loud songs a bit quieter
+		// (and a value < 0 would end up inverting the audio signal or something)
+		m_fAudioNormalizingAdjust = std::min(1.0f, std::max(0.0f, powf(10, (fGainAdjust / 20))));
+	}
+	else
+	{
+		m_fAudioNormalizingAdjust = 1;
+	}
 }
 
 void RageSoundReader_PostBuffering::SetMasterVolume(float fVolume) {
