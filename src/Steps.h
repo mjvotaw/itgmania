@@ -9,6 +9,7 @@
 #include "Difficulty.h"
 #include "RageUtil_AutoPtr.h"
 #include "TimingData.h"
+#include "MeasureInfo.h"
 
 #include <vector>
 
@@ -139,6 +140,7 @@ public:
 	void SetLoadedFromProfile( ProfileSlot slot )	{ m_LoadedFromProfile = slot; }
 	void SetMeter( int meter );
 	void SetCachedRadarValues( const RadarValues v[NUM_PLAYERS] );
+	void SetCachedMeasureInfo(const MeasureInfo ms[NUM_PLAYERS]);
 	float PredictMeter() const;
 
 	unsigned GetHash() const;
@@ -163,6 +165,9 @@ public:
 	void TidyUpData();
 	void CalculateRadarValues( float fMusicLengthSeconds );
 
+	void CalculateMeasureInfo();
+	const MeasureInfo &GetMeasureInfo(PlayerNumber pn) const { return Real()->m_CachedMeasureInfo[pn]; }
+	
 	/**
 	 * @brief The TimingData used by the Steps.
 	 *
@@ -253,6 +258,10 @@ private:
 	/** @brief The radar values used for each player. */
 	RadarValues			m_CachedRadarValues[NUM_PLAYERS];
 	bool                m_bAreCachedRadarValuesJustLoaded;
+	
+	mutable MeasureInfo m_CachedMeasureInfo[NUM_PLAYERS];
+	bool m_bAreCachedMeasureInfoJustLoaded;
+	
 	/** @brief The name of the person who created the Steps. */
 	RString				m_sCredit;
 	/** @brief The name of the chart. */
