@@ -90,12 +90,12 @@ void TechCounts::FromString( RString sTechCounts )
 	}
 }
 
-void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> &rows, StepParity::StageLayout & layout, TechCounts &out)
+void TechCounts::CalculateTechCountsFromRows(std::vector<StepParity::Row> &rows, StepParity::StageLayout & layout, TechCounts &out)
 {
 	for (unsigned long i = 1; i < rows.size(); i++)
 	{
-		const StepParity::Row &currentRow = rows[i];
-		const StepParity::Row &previousRow = rows[i - 1];
+		StepParity::Row &currentRow = rows[i];
+		StepParity::Row &previousRow = rows[i - 1];
 			
 		float elapsedTime = currentRow.second - previousRow.second;
 		
@@ -122,6 +122,7 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 					if(elapsedTime < JACK_CUTOFF)
 					{
 						out[TechCountsCategory_Jacks] += 1;
+						currentRow.notes[currentRow.whereTheFeetAre[foot]].tech.push_back(TechCountsCategory_Jacks);
 					}
 				}
 				else
@@ -129,6 +130,7 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 					if(elapsedTime < DOUBLESTEP_CUTOFF)
 					{
 						out[TechCountsCategory_Doublesteps] += 1;
+						currentRow.notes[currentRow.whereTheFeetAre[foot]].tech.push_back(TechCountsCategory_Doublesteps);
 					}
 				}
 			}
@@ -140,11 +142,13 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 			if(currentRow.whereTheFeetAre[StepParity::LEFT_HEEL] != StepParity::INVALID_COLUMN && currentRow.whereTheFeetAre[StepParity::LEFT_TOE] != StepParity::INVALID_COLUMN)
 			{
 				out[TechCountsCategory_Brackets] += 1;
+				currentRow.notes[currentRow.whereTheFeetAre[StepParity::LEFT_TOE]].tech.push_back(TechCountsCategory_Brackets);
 			}
 
 			if(currentRow.whereTheFeetAre[StepParity::RIGHT_HEEL] != StepParity::INVALID_COLUMN && currentRow.whereTheFeetAre[StepParity::RIGHT_TOE] != StepParity::INVALID_COLUMN)
 			{
 				out[TechCountsCategory_Brackets] += 1;
+				currentRow.notes[currentRow.whereTheFeetAre[StepParity::RIGHT_TOE]].tech.push_back(TechCountsCategory_Brackets);
 			}
 		}
 
@@ -155,6 +159,8 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 			{
 				out[TechCountsCategory_UpFootswitches] += 1;
 				out[TechCountsCategory_Footswitches] += 1;
+				currentRow.notes[c].tech.push_back(TechCountsCategory_UpFootswitches);
+				currentRow.notes[c].tech.push_back(TechCountsCategory_Footswitches);
 			}
 		}
 		// Check for down footswitches
@@ -164,6 +170,8 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 			{
 				out[TechCountsCategory_DownFootswitches] += 1;
 				out[TechCountsCategory_Footswitches] += 1;
+				currentRow.notes[c].tech.push_back(TechCountsCategory_DownFootswitches);
+				currentRow.notes[c].tech.push_back(TechCountsCategory_Footswitches);
 			}
 		}
 		
@@ -173,6 +181,7 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 			if(isFootswitch(c, currentRow, previousRow, elapsedTime))
 			{
 				out[TechCountsCategory_Sideswitches] += 1;
+				currentRow.notes[c].tech.push_back(TechCountsCategory_Sideswitches);
 			}
 		}
 		
@@ -215,18 +224,23 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 						if(previousPreviousRightPos.x > leftPos.x)
 						{
 							out[TechCountsCategory_FullCrossovers] += 1;
+							currentRow.notes[rightHeel].tech.push_back(TechCountsCategory_FullCrossovers);
 						}
 						else
 						{
 							out[TechCountsCategory_HalfCrossovers] += 1;
+							currentRow.notes[rightHeel].tech.push_back(TechCountsCategory_HalfCrossovers);
 						}
 						out[TechCountsCategory_Crossovers] += 1;
+						currentRow.notes[rightHeel].tech.push_back(TechCountsCategory_Crossovers);
 					}
 				}
 				else
 				{
 					out[TechCountsCategory_HalfCrossovers] += 1;
 					out[TechCountsCategory_Crossovers] += 1;
+					currentRow.notes[rightHeel].tech.push_back(TechCountsCategory_HalfCrossovers);
+					currentRow.notes[rightHeel].tech.push_back(TechCountsCategory_Crossovers);
 				}
 			}
 		}
@@ -248,18 +262,23 @@ void TechCounts::CalculateTechCountsFromRows(const std::vector<StepParity::Row> 
 						if(rightPos.x > previousPreviousLeftPos.x)
 						{
 							out[TechCountsCategory_FullCrossovers] += 1;
+							currentRow.notes[leftHeel].tech.push_back(TechCountsCategory_FullCrossovers);
 						}
 						else
 						{
 							out[TechCountsCategory_HalfCrossovers] += 1;
+							currentRow.notes[leftHeel].tech.push_back(TechCountsCategory_HalfCrossovers);
 						}
 						out[TechCountsCategory_Crossovers] += 1;
+						currentRow.notes[leftHeel].tech.push_back(TechCountsCategory_Crossovers);
 					}
 				}
 				else
 				{
 					out[TechCountsCategory_HalfCrossovers] += 1;
 					out[TechCountsCategory_Crossovers] += 1;
+					currentRow.notes[leftHeel].tech.push_back(TechCountsCategory_HalfCrossovers);
+					currentRow.notes[leftHeel].tech.push_back(TechCountsCategory_Crossovers);
 				}
 			}
 		}

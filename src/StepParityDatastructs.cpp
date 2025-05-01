@@ -114,6 +114,13 @@ void Row::setFootPlacement(const std::vector<Foot> & footPlacement)
 			whereTheFeetAre[footPlacement[c]] = c;
 			noteCount += 1;
 		}
+		else if(holds[c].type != TapNoteType_Empty) {
+			holds[c].parity = footPlacement[c];
+			columns[c] = footPlacement[c];
+			whereTheFeetAre[footPlacement[c]] = c;
+			// we don't increment noteCount here, since this isn't a real note,
+			// this just represents a hold body
+		}
 	}
 }
 
