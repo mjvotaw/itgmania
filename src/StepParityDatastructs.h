@@ -3,6 +3,7 @@
 
 #include "GameConstantsAndTypes.h"
 #include "NoteData.h"
+#include "TechCountsCategory.h"
 #include <queue>
 #include <unordered_map>
 
@@ -163,8 +164,8 @@ namespace StepParity {
 		float second = false;		// time into the song on which the note occurs
 
 		Foot parity = NONE; 		// Which foot (and which part of the foot) will most likely be used
+		std::vector<TechCountsCategory> tech;
 	};
-
 
 	/// @brief A slightly complicated structure to encapsulate all of the data for a given 
 	/// row of a step chart.

@@ -66,6 +66,7 @@ list(APPEND SM_DATA_NOTEDATA_HPP
             "NoteDataWithScoring.h"
             "ColumnCues.h"
             "TechCounts.h"
+            "TechCountsCategory.h"
             "MeasureInfo.h"
             "StepParityGenerator.h"
             "StepParityDatastructs.h"
