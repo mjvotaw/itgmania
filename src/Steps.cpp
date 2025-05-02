@@ -1069,81 +1069,38 @@ float Steps::GetPeakNps(PlayerNumber pn) const {
 	}
 }
 
-void Steps::CalculateFootPlacementData(PlayerNumber pn)
+void Steps::CalculateFootPlacementData()
 {
-	if(m_CachedFootPlacementData.size() < NUM_PLAYERS)
-	{
-		m_CachedFootPlacementData.resize(NUM_PLAYERS);
-	}
-
-	NoteData tempNoteData;
-	this->GetNoteData( tempNoteData );
-
-	if( tempNoteData.IsComposite() )
-	{
-		std::vector<NoteData> vParts;
-
-		NoteDataUtil::SplitCompositeNoteData( tempNoteData, vParts );
-		tempNoteData = vParts[pn];
-	}
 	
 	// If we don't have a valid layout for this StepsType, then don't even bother
 	if(StepParity::Layouts.find(this->m_StepsType) == StepParity::Layouts.end())
 	{
 		return;
 	}
+
+	NoteData tempNoteData;
+	this->GetNoteData( tempNoteData );
+
 	StepParity::StageLayout layout = StepParity::Layouts.at(this->m_StepsType);
 	GAMESTATE->SetProcessedTimingData(this->GetTimingData());
 	StepParity::StepParityGenerator gen = StepParity::StepParityGenerator(layout);
 	gen.analyzeNoteData(tempNoteData);
 	TechCounts::CalculateTechCountsFromRows(gen.rows, layout, m_CachedTechCounts[0]);
 
-	std::vector<StepParity::IntermediateNoteData> footPlacements;
-
-	for(StepParity::Row row : gen.rows)
-	{
-		for(StepParity::IntermediateNoteData note : row.notes)
-		{
-			if(note.type != TapNoteType_Empty)
-			{
-				footPlacements.push_back(note);
-			}
-		}
-	}
-
 	// TODO: do this more better, I don't remember how right now
-	m_CachedFootPlacementData[pn] = footPlacements;
+	m_CachedFootPlacementData = gen.rows;
 }
 
-const std::vector<StepParity::IntermediateNoteData> & Steps::GetFootPlacementData(PlayerNumber pn)
+const std::vector<StepParity::Row> & Steps::GetFootPlacementData()
 {
-	if(m_CachedFootPlacementData.size() <= pn || m_CachedFootPlacementData[pn].size() == 0)
+	if(m_CachedFootPlacementData.size() == 0)
 	{
-		CalculateFootPlacementData(pn);
+		CalculateFootPlacementData();
 	}
 
-	return m_CachedFootPlacementData[pn];
+	return m_CachedFootPlacementData;
 }
 
-std::vector<StepParity::IntermediateNoteData> Steps::GetTechFootPlacements(PlayerNumber pn)
-{
-	if(m_CachedFootPlacementData.size() <= pn || m_CachedFootPlacementData[pn].size() == 0)
-	{
-		CalculateFootPlacementData(pn);
-	}
-
-	std::vector<StepParity::IntermediateNoteData> notesWithTech;
-
-	for(StepParity::IntermediateNoteData note : m_CachedFootPlacementData[pn])
-	{
-		if(note.tech.size() > 0)
-		{
-			notesWithTech.push_back(note);
-		}
-	}
-
-	return notesWithTech;
-}
 
 // lua start
 #include "LuaBinding.h"
@@ -1357,71 +1314,61 @@ public:
 
 	static int GetFootPlacements(T *p, lua_State*L)
 	{
-		PlayerNumber pn = PLAYER_1;
-		if (!lua_isnil(L, 1)) {
-			pn = Enum::Check<PlayerNumber>(L, 1);
-		}
-
-		const std::vector<StepParity::IntermediateNoteData> notes = p->GetFootPlacementData(pn);
+		const std::vector<StepParity::Row> rows = p->GetFootPlacementData();
 		
+		lua_createtable(L, rows.size(), 0);
 
-		lua_createtable(L, notes.size(), 0);
-
-		for (unsigned i = 0; i < notes.size(); i++)
+		for (unsigned i = 0; i < rows.size(); i++)
 		{
-			lua_createtable(L, 0, 3);
+			lua_createtable(L, 0, 4);
 
 			lua_pushstring(L, "beat");
-			lua_pushnumber(L, notes[i].beat);
+			lua_pushnumber(L, rows[i].beat);
 			lua_settable(L, -3);
 
-			lua_pushstring(L, "column");
-			lua_pushnumber(L, notes[i].col);
-			lua_settable(L, -3);
-
-			lua_pushstring(L, "foot");
-			lua_pushnumber(L, notes[i].parity);
-			lua_settable(L, -3);
-
-			lua_rawseti(L, -2, i + 1);
-		}
-		return 1;
-	}
-
-	static int GetTechPlacements(T *p, lua_State*L)
-	{
-		PlayerNumber pn = PLAYER_1;
-		if (!lua_isnil(L, 1)) {
-			pn = Enum::Check<PlayerNumber>(L, 1);
-		}
-
-		std::vector<StepParity::IntermediateNoteData> techNotes = p->GetTechFootPlacements(pn);
-		LOG->Info("GetTechPlacements:: techNotes.size = %lu", techNotes.size());
-
-		lua_createtable(L, techNotes.size(), 0);
-
-		for (unsigned i = 0; i < techNotes.size(); i++)
-		{
-			lua_createtable(L, 0, 3);
-
-			lua_pushstring(L, "beat");
-			lua_pushnumber(L, techNotes[i].beat);
-			lua_settable(L, -3);
-
-			lua_pushstring(L, "column");
-			lua_pushnumber(L, techNotes[i].col);
-			lua_settable(L, -3);
-
-			lua_pushstring(L, "tech");
-			lua_createtable(L, techNotes[i].tech.size(), 0);
-
-			for (unsigned t = 0; t < techNotes[i].tech.size(); t++)
+			
+			// add columns
+			lua_pushstring(L, "columns");
+			lua_createtable(L, 0, 0);
+			int colIndex = 1;
+			for (unsigned n = 0; n < rows[i].notes.size(); n++)
 			{
-				lua_pushnumber(L, techNotes[i].tech[t]);
-				lua_rawseti(L, -2, t + 1);
+				if(rows[i].notes[n].type != TapNoteType_Empty)
+				{
+					lua_pushnumber(L, rows[i].notes[n].col);
+					lua_rawseti(L, -2, colIndex++);
+				}
 			}
 			lua_settable(L, -3);
-			lua_rawseti(L, -2, i + 1);
+
+
+        // add feet
+        lua_pushstring(L, "feet");
+        lua_createtable(L, 0, 0);
+				int footIndex = 1;
+				for (size_t n = 0; n < rows[i].notes.size(); n++)
+				{
+					if(rows[i].notes[n].parity != StepParity::Foot::NONE)
+					{
+            lua_pushnumber(L, rows[i].notes[n].parity);
+            lua_rawseti(L, -2, footIndex++);
+					}
+				}
+				lua_settable(L, -3);
+
+        // add tech
+        lua_pushstring(L, "tech");
+        lua_createtable(L, 0, 0);
+        int techIndex = 1;
+        for (size_t n = 0; n < rows[i].notes.size(); n++) {
+            for (const int techVal : rows[i].notes[n].tech) {
+                lua_pushnumber(L, techVal);
+                lua_rawseti(L, -2, techIndex++);
+            }
+        }
+        lua_settable(L, -3);
+
+        lua_rawseti(L, -2, i + 1);
 		}
 		return 1;
 	}
@@ -1462,7 +1409,6 @@ public:
 		ADD_METHOD( GetPeakNps );
 		ADD_METHOD( GetGrooveStatsHash );
 		ADD_METHOD( GetGrooveStatsHashVersion );
-		ADD_METHOD( GetTechPlacements );
 		ADD_METHOD( GetFootPlacements );
 	}
 };

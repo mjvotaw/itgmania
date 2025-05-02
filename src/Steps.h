@@ -199,9 +199,8 @@ public:
 	const std::vector<std::vector<int>> & GetAllNotesPerMeasures() const { return Real()->m_CachedNotesPerMeasure; };
 	const std::vector<int> &GetNotesPerMeasure(PlayerNumber pn) const;
 
-	void CalculateFootPlacementData(PlayerNumber pn);
-	const std::vector<StepParity::IntermediateNoteData> &GetFootPlacementData(PlayerNumber pn);
-	std::vector<StepParity::IntermediateNoteData> GetTechFootPlacements(PlayerNumber pn);
+	void CalculateFootPlacementData();
+	const std::vector<StepParity::Row> &GetFootPlacementData();
 	
 	float GetPeakNps(PlayerNumber pn) const;
 	const std::vector<float> & GetAllPeakNps() const { return Real()->m_PeakNps; }
@@ -314,7 +313,7 @@ private:
 	RString m_sGrooveStatsHash;
 	int m_iGrooveStatsHashVersion;
 
-	std::vector<std::vector<StepParity::IntermediateNoteData>> m_CachedFootPlacementData;
+	std::vector<StepParity::Row> m_CachedFootPlacementData;
 
 	/** @brief The name of the person who created the Steps. */
 	RString				m_sCredit;
