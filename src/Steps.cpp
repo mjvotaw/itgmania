@@ -1071,7 +1071,6 @@ float Steps::GetPeakNps(PlayerNumber pn) const {
 
 void Steps::CalculateFootPlacementData()
 {
-	
 	// If we don't have a valid layout for this StepsType, then don't even bother
 	if(StepParity::Layouts.find(this->m_StepsType) == StepParity::Layouts.end())
 	{
@@ -1086,7 +1085,7 @@ void Steps::CalculateFootPlacementData()
 	StepParity::StepParityGenerator gen = StepParity::StepParityGenerator(layout);
 	gen.analyzeNoteData(tempNoteData);
 	TechCounts::CalculateTechCountsFromRows(gen.rows, layout, m_CachedTechCounts[0]);
-
+	GAMESTATE->SetProcessedTimingData(nullptr);
 	// TODO: do this more better, I don't remember how right now
 	m_CachedFootPlacementData = gen.rows;
 }
