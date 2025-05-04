@@ -1,7 +1,25 @@
 #include "global.h"
 #include "StepParityDatastructs.h"
+#include "LocalizedString.h"
+#include "LuaBinding.h"
+#include "EnumHelper.h"
 
 using namespace StepParity;
+
+
+static const char *FootNames[] = {
+	"None",
+	"LeftHeel",
+	"LeftToe",
+	"RightHeel",
+	"RightToe"
+};
+
+XToString( Foot );
+XToLocalizedString( Foot );
+LuaFunction(FootToLocalizedString, FootToLocalizedString(Enum::Check<Foot>(L, 1)) );
+LuaXType( Foot );
+
 
 
 bool State::operator==(const State &other) const

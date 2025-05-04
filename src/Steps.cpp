@@ -1348,7 +1348,7 @@ public:
 				int footIndex = 1;
 				for (size_t n = 0; n < rows[i].notes.size(); n++)
 				{
-					if(rows[i].notes[n].parity != StepParity::Foot::NONE)
+					if(rows[i].notes[n].parity != StepParity::Foot::Foot_None)
 					{
             lua_pushnumber(L, rows[i].notes[n].parity);
             lua_rawseti(L, -2, footIndex++);

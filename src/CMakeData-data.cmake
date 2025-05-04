@@ -55,6 +55,7 @@ list(APPEND SM_DATA_NOTEDATA_SRC
             "NoteDataWithScoring.cpp"
             "ColumnCues.cpp"
             "TechCounts.cpp"
+            "TechCountsCategory.cpp"
             "MeasureInfo.cpp"
             "StepParityGenerator.cpp"
             "StepParityDatastructs.cpp"

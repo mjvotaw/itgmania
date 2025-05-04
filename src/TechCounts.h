@@ -5,17 +5,8 @@
 #include "StepParityGenerator.h"
 #include "NoteData.h"
 #include "TechCountsCategory.h"
-/** @brief Unknown radar values are given a default value. */
-#define TECHCOUNTS_VAL_UNKNOWN -1
 
-const RString& TechCountsCategoryToString( TechCountsCategory cat );
-/**
- * @brief Turn the radar category into a proper localized string.
- * @param cat the radar category.
- * @return the localized string version of the radar category.
- */
-const RString& TechCountsCategoryToLocalizedString( TechCountsCategory cat );
-LuaDeclareType( TechCountsCategory );
+#define TECHCOUNTS_VAL_UNKNOWN -1
 
 struct lua_State;
 

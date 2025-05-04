@@ -17,4 +17,7 @@ enum TechCountsCategory
 	TechCountsCategory_Invalid
 };
 
+const RString& TechCountsCategoryToString( TechCountsCategory tnst );
+const RString& TechCountsCategoryToLocalizedString( TechCountsCategory tnst );
+
 #endif
