@@ -29,9 +29,6 @@ namespace StepParity {
 	// OTHER_PART_OF_FOOT[LEFT_HEEL] == LEFT_TOE
 	const std::vector<StepParity::Foot> OTHER_PART_OF_FOOT = {Foot_None, Foot_LeftToe, Foot_LeftHeel, Foot_RightToe, Foot_RightHeel};
 	
-	const RString FEET_LABELS[] = {"N", "L", "l", "R", "r", "5??", "6??"};
-	const RString TapNoteTypeShortNames[] = { "Empty", "Tap",  "Mine",  "Attack", "AutoKeySound", "Fake", "", "" };
-	const RString TapNoteSubTypeShortNames[] = { "Hold", "Roll", "", "" };	
 
 	enum Cost
 	{
