@@ -1321,12 +1321,10 @@ public:
 		for (unsigned i = 0; i < rows.size(); i++)
 		{
 			lua_createtable(L, 0, 4);
-
 			lua_pushstring(L, "beat");
 			lua_pushnumber(L, rows[i].beat);
 			lua_settable(L, -3);
 
-			
 			// add columns
 			lua_pushstring(L, "columns");
 			lua_createtable(L, 0, 0);
@@ -1335,40 +1333,26 @@ public:
 			{
 				if(rows[i].notes[n].type != TapNoteType_Empty)
 				{
-					lua_pushnumber(L, rows[i].notes[n].col);
-					lua_rawseti(L, -2, colIndex++);
+					lua_pushnumber(L, rows[i].notes[n].col+1);
+					Enum::Push(L, rows[i].notes[n].parity);
+					lua_settable(L, -3);
+				}
+			}
+			lua_settable(L, -3);
+ 
+			// add tech
+			lua_pushstring(L, "tech");
+			lua_createtable(L, 0, 0);
+			int techIndex = 1;
+			for (size_t n = 0; n < rows[i].notes.size(); n++) {
+				for (const TechCountsCategory techVal : rows[i].notes[n].tech) {
+					Enum::Push(L, techVal);
+					lua_rawseti(L, -2, techIndex++);
 				}
 			}
 			lua_settable(L, -3);
 
-
-        // add feet
-        lua_pushstring(L, "feet");
-        lua_createtable(L, 0, 0);
-				int footIndex = 1;
-				for (size_t n = 0; n < rows[i].notes.size(); n++)
-				{
-					if(rows[i].notes[n].parity != StepParity::Foot::Foot_None)
-					{
-            lua_pushnumber(L, rows[i].notes[n].parity);
-            lua_rawseti(L, -2, footIndex++);
-					}
-				}
-				lua_settable(L, -3);
-
-        // add tech
-        lua_pushstring(L, "tech");
-        lua_createtable(L, 0, 0);
-        int techIndex = 1;
-        for (size_t n = 0; n < rows[i].notes.size(); n++) {
-            for (const int techVal : rows[i].notes[n].tech) {
-                lua_pushnumber(L, techVal);
-                lua_rawseti(L, -2, techIndex++);
-            }
-        }
-        lua_settable(L, -3);
-
-        lua_rawseti(L, -2, i + 1);
+			lua_rawseti(L, -2, i + 1);
 		}
 		return 1;
 	}
