@@ -1,6 +1,5 @@
 #include "global.h"
 #include "RageUtil.h"
-#include "RageUtil_MathFns.h"
 #include "RageUtil_Regex.h"
 #include "RageMath.h"
 #include "RageLog.h"
@@ -1956,7 +1955,6 @@ LuaFunction( mbstrlen, (int)RStringToWstring(SArg(1)).length() )
 LuaFunction( URLEncode, URLEncode( SArg(1) ) );
 LuaFunction( PrettyPercent, PrettyPercent( FArg(1), FArg(2) ) );
 //LuaFunction( IsHexVal, IsHexVal( SArg(1) ) );
-LuaFunction( lerp, lerp(FArg(1), FArg(2), FArg(3)) );
 
 int LuaFunc_BinaryToHex(lua_State* L);
 int LuaFunc_BinaryToHex(lua_State* L)
@@ -2183,83 +2181,6 @@ int LuaFunc_JsonDecode(lua_State* L)
 	return 1;
 }
 LUAFUNC_REGISTER_COMMON(JsonDecode);
-
-void luafunc_approach_internal(lua_State* L, int valind, int goalind, int speedind, const float mult, int process_index);
-void luafunc_approach_internal(lua_State* L, int valind, int goalind, int speedind, const float mult, int process_index)
-{
-#define TONUMBER_NICE(dest, num_name, index) \
-	if(!lua_isnumber(L, index)) \
-	{ \
-		luaL_error(L, "approach: " #num_name " for approach %d is not a number.", process_index); \
-	} \
-	dest= lua_tonumber(L, index);
-	float val= 0;
-	float goal= 0;
-	float speed= 0;
-	TONUMBER_NICE(val, current, valind);
-	TONUMBER_NICE(goal, goal, goalind);
-	TONUMBER_NICE(speed, speed, speedind);
-#undef TONUMBER_NICE
-	if(speed < 0)
-	{
-		luaL_error(L, "approach: speed %d is negative.", process_index);
-	}
-	fapproach(val, goal, speed*mult);
-	lua_pushnumber(L, val);
-}
-
-int LuaFunc_approach(lua_State* L);
-int LuaFunc_approach(lua_State* L)
-{
-	// Args:  current, goal, speed
-	// Returns:  new_current
-	luafunc_approach_internal(L, 1, 2, 3, 1.0f, 1);
-	return 1;
-}
-LUAFUNC_REGISTER_COMMON(approach);
-
-int LuaFunc_multiapproach(lua_State* L);
-int LuaFunc_multiapproach(lua_State* L)
-{
-	// Args:  {currents}, {goals}, {speeds}, speed_multiplier
-	// speed_multiplier is optional, and is intended to be the delta time for
-	// the frame, so that this can be used every frame and have the current
-	// approach the goal at a framerate independent speed.
-	// Returns:  {currents}
-	// Modifies the values in {currents} in place.
-	if(lua_gettop(L) < 3)
-	{
-		luaL_error(L, "multiapproach:  A table of current values, a table of goal values, and a table of speeds must be passed.");
-	}
-	size_t currents_len= lua_objlen(L, 1);
-	size_t goals_len= lua_objlen(L, 2);
-	size_t speeds_len= lua_objlen(L, 3);
-	float mult= 1.0f;
-	if(lua_isnumber(L, 4))
-	{
-		mult= lua_tonumber(L, 4);
-	}
-	if(currents_len != goals_len || currents_len != speeds_len)
-	{
-		luaL_error(L, "multiapproach:  There must be the same number of current values, goal values, and speeds.");
-	}
-	if(!lua_istable(L, 1) || !lua_istable(L, 2) || !lua_istable(L, 3))
-	{
-		luaL_error(L, "multiapproach:  current, goal, and speed must all be tables.");
-	}
-	for(size_t i= 1; i <= currents_len; ++i)
-	{
-		lua_rawgeti(L, 1, i);
-		lua_rawgeti(L, 2, i);
-		lua_rawgeti(L, 3, i);
-		luafunc_approach_internal(L, -3, -2, -1, mult, i);
-		lua_rawseti(L, 1, i);
-		lua_pop(L, 3);
-	}
-	lua_pushvalue(L, 1);
-	return 1;
-}
-LUAFUNC_REGISTER_COMMON(multiapproach);
 
 int LuaFunc_get_music_file_length(lua_State* L);
 int LuaFunc_get_music_file_length(lua_State* L)
