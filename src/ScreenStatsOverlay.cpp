@@ -5,6 +5,7 @@
 #include "RageDisplay.h"
 #include "RageLog.h"
 #include "ScreenDimensions.h"
+#include "RageUtil_MathFns.h"
 
 REGISTER_SCREEN_CLASS( ScreenStatsOverlay );
 

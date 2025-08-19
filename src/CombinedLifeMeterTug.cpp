@@ -5,6 +5,7 @@
 #include "PrefsManager.h"
 #include "ThemeMetric.h"
 #include "ActorUtil.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 

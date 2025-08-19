@@ -10,6 +10,7 @@
 #include "PlayerState.h"
 #include "XmlFile.h"
 #include "Course.h"
+#include "RageUtil_MathFns.h"
 
 
 REGISTER_ACTOR_CLASS( PercentageDisplay );

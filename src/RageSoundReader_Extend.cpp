@@ -3,6 +3,7 @@
 #include "RageLog.h"
 #include "RageSoundUtil.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 

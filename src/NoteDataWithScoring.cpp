@@ -8,6 +8,7 @@
 #include "ThemeMetric.h"
 #include "RageLog.h"
 #include "TimingData.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 #include <vector>

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "MouseDevice.h"
+#include "RageUtil_MathFns.h"
 
 #include <vector>
 

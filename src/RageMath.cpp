@@ -8,6 +8,7 @@
 #include "RageLog.h"
 #include "RageMath.h"
 #include "RageTypes.h"
+#include "RageUtil_MathFns.h"
 
 #include <cfloat>
 #include <cmath>

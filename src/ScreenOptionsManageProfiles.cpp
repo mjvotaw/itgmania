@@ -12,6 +12,7 @@
 #include "Profile.h"
 #include "OptionRowHandler.h"
 #include "LocalizedString.h"
+#include "RageUtil_MathFns.h"
 
 #include <vector>
 

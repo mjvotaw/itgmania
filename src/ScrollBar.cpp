@@ -2,6 +2,7 @@
 #include "ScrollBar.h"
 #include "ThemeManager.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 

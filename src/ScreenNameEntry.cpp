@@ -2,6 +2,7 @@
 #include "ScreenNameEntry.h"
 #include "GameConstantsAndTypes.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "PrefsManager.h"
 #include "GameManager.h"
 #include "RageLog.h"

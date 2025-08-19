@@ -2,6 +2,7 @@
 #include "LuaManager.h"
 #include "LuaReference.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageFile.h"
 #include "RageThreads.h"

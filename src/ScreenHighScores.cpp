@@ -5,6 +5,7 @@
 #include "Song.h"
 #include "RageLog.h"
 #include "UnlockManager.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 #include <vector>

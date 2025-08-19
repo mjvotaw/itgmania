@@ -13,6 +13,7 @@
 #include "RageSoundReader_WAV.h"
 #include "RageUtil.h"
 #include "RageUtil_Endian.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageFileBasic.h"
 

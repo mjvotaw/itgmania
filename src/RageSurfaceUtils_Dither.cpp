@@ -1,6 +1,7 @@
 #include "global.h"
 #include "RageSurfaceUtils_Dither.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageSurface.h"
 #include "RageSurfaceUtils.h"
 

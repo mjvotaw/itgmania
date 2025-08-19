@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "GameConstantsAndTypes.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageUtil_RandomNumbers.h"
 #include "PrefsManager.h"
 #include "GameManager.h"

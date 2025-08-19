@@ -7,6 +7,7 @@
 #include "RageDisplay.h"
 #include "RageFile.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "SpecialFiles.h"
 

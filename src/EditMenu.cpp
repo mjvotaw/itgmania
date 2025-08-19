@@ -12,6 +12,7 @@
 #include "ImageCache.h"
 #include "UnlockManager.h"
 #include "SongUtil.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 #include <vector>

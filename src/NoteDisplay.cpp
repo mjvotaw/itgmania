@@ -18,6 +18,7 @@
 #include "ReceptorArrowRow.h"
 #include "Sprite.h"
 #include "Style.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 #include <cstdint>

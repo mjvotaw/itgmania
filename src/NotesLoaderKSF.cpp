@@ -4,6 +4,7 @@
 #include "MsdFile.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "NoteData.h"
 #include "NoteTypes.h"
 #include "Song.h"

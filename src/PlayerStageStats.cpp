@@ -9,6 +9,7 @@
 #include "ScoreKeeperNormal.h"
 #include "PrefsManager.h"
 #include "CommonMetrics.h"
+#include "RageUtil_MathFns.h"
 
 #include <cfloat>
 #include <cmath>

@@ -4,6 +4,7 @@
 #include "RageMath.h"
 #include "RageDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageTextureManager.h"
 #include "XmlFile.h"
 #include "RageFile.h"

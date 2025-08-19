@@ -1,6 +1,7 @@
 #include "global.h"
 #include "WheelBase.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "GameManager.h"
 #include "PrefsManager.h"
 #include "ScreenManager.h"	// for sending SM_PlayMusicSample

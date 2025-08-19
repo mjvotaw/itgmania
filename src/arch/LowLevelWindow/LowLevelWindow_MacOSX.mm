@@ -2,6 +2,7 @@
 #import "LowLevelWindow_MacOSX.h"
 #import "DisplaySpec.h"
 #import "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #import "RageThreads.h"
 #import "RageDisplay_OGL_Helpers.h"
 #import "arch/ArchHooks/ArchHooks.h"

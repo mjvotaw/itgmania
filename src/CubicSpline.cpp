@@ -2,6 +2,7 @@
 #include "CubicSpline.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 #include <list>

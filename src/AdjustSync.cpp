@@ -41,7 +41,7 @@
 #include "LocalizedString.h"
 #include "PrefsManager.h"
 #include "ScreenManager.h"
-#include "RageUtil_StatsFns.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 #include <cstddef>

@@ -7,6 +7,7 @@
 #include "ScreenDimensions.h"
 #include "InputEventPlus.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "LocalizedString.h"
 #include "Song.h"
 #include "SongManager.h"

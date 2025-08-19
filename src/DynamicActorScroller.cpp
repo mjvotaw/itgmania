@@ -5,6 +5,7 @@
 #include "ActorUtil.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "LuaBinding.h"
 
 #include <cmath>

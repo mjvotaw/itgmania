@@ -9,6 +9,7 @@ using namespace RageDisplay_Legacy_Helpers;
 #include "RageSurfaceUtils.h"
 #include "RageUtil.h"
 #include "RageUtil_Endian.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageTextureManager.h"
 #include "RageMath.h"

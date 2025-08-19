@@ -1,6 +1,7 @@
 #include "global.h"
 #include "MeterDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "GameState.h"
 #include "Song.h"
 #include "ActorUtil.h"

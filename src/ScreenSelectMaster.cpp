@@ -10,6 +10,7 @@
 #include "ActorUtil.h"
 #include "RageLog.h"
 #include "InputEventPlus.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 #include <set>

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "RageTypes.h"
 #include "LuaManager.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 

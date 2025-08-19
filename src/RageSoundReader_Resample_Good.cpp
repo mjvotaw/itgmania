@@ -9,6 +9,7 @@
 #include "RageSoundReader_Resample_Good.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageMath.h"
 #include "RageThreads.h"
 

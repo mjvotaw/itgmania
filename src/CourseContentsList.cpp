@@ -8,6 +8,7 @@
 #include "XmlFile.h"
 #include "ActorUtil.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "Steps.h"
 
 REGISTER_ACTOR_CLASS( CourseContentsList );

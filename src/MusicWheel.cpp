@@ -1,6 +1,7 @@
 #include "global.h"
 #include "MusicWheel.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageUtil_RandomNumbers.h"
 #include "SongManager.h"
 #include "GameManager.h"

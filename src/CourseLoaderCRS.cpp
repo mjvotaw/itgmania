@@ -3,6 +3,7 @@
 #include "RageLog.h"
 #include "Course.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "SongCacheIndex.h"
 #include "PrefsManager.h"
 #include "PlayerOptions.h"

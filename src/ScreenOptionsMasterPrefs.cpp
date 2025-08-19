@@ -9,6 +9,7 @@
 #include "RageDisplay.h"
 #include "RageUtil.h"
 #include "RageUtil_LanguageInfo.h"
+#include "RageUtil_MathFns.h"
 #include "GameManager.h"
 #include "GameState.h"
 #include "StepMania.h"

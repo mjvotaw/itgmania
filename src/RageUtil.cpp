@@ -1,5 +1,7 @@
 #include "global.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
+#include "RageUtil_Regex.h"
 #include "RageMath.h"
 #include "RageLog.h"
 #include "RageFile.h"
@@ -8,7 +10,6 @@
 #include "LocalizedString.h"
 #include "LuaBinding.h"
 #include "LuaManager.h"
-#include "RageUtil_Regex.h"
 
 #include <json/json.h>
 #include <pcre.h>
@@ -36,44 +37,6 @@ bool HexToBinary(const RString&, RString&);
 void utf8_sanitize(RString &);
 void UnicodeUpperLower(wchar_t *, size_t, const unsigned char *);
 
-void fapproach( float& val, float other_val, float to_move )
-{
-	ASSERT_M( to_move >= 0, ssprintf("to_move: %f < 0", to_move) );
-	if( val == other_val )
-		return;
-	float fDelta = other_val - val;
-	float fSign = fDelta / std::abs( fDelta );
-	float fToMove = fSign*to_move;
-	if( std::abs(fToMove) > std::abs(fDelta) )
-		fToMove = fDelta;	// snap
-	val += fToMove;
-}
-
-/* Return a positive x mod y. */
-float fmodfp(float x, float y)
-{
-	x = std::fmod(x, y);	/* x is [-y,y] */
-	x += y;					/* x is [0,y*2] */
-	x = std::fmod(x, y);	/* x is [0,y] */
-	return x;
-}
-
-/* https://graphics.stanford.edu/%7Eseander/bithacks.html#RoundUpPowerOf2 */
-int power_of_two( int v )
-{
-	v--;
-	v |= v >> 1;
-	v |= v >> 2;
-	v |= v >> 4;
-	v |= v >> 8;
-	v |= v >> 16;
-	v++;
-
-	/* Always be sure to return a value of at least 1. In the event of any edge
-	 * cases, such as a zero or negative input, the returned value will be `1`. */
-	v += (v == 0);
-	return v;
-}
 
 bool IsAnInt( const RString &s )
 {

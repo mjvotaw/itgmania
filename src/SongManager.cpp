@@ -23,6 +23,7 @@
 #include "ProfileManager.h"
 #include "RageFile.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageUtil_RandomNumbers.h"
 #include "RageFileManager.h"
 #include "RageLog.h"

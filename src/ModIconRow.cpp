@@ -8,6 +8,7 @@
 #include "ActorUtil.h"
 #include "XmlFile.h"
 #include "LuaManager.h"
+#include "RageUtil_MathFns.h"
 
 #include <vector>
 

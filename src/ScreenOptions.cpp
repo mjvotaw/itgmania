@@ -1,6 +1,7 @@
 #include "global.h"
 #include "ScreenOptions.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "ScreenManager.h"
 #include "PrefsManager.h"
 #include "GameConstantsAndTypes.h"

@@ -15,6 +15,7 @@
 #include "StreamDisplay.h"
 #include "Steps.h"
 #include "Course.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 

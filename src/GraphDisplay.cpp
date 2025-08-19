@@ -5,6 +5,7 @@
 #include "RageDisplay.h"
 #include "ActorUtil.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageMath.h"
 #include "StageStats.h"

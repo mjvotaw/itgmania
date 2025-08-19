@@ -2,6 +2,7 @@
 #include "ModelTypes.h"
 #include "IniFile.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageFile.h"
 #include "RageMath.h"
 #include "RageTexture.h"

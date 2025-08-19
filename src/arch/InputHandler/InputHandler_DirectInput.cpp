@@ -2,6 +2,7 @@
 #include "InputHandler_DirectInput.h"
 
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "archutils/Win32/AppInstance.h"
 #include "archutils/Win32/DirectXHelpers.h"

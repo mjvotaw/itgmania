@@ -1,6 +1,7 @@
 #include "global.h"
 #include "NoteField.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "GameConstantsAndTypes.h"
 #include "ArrowEffects.h"
 #include "GameManager.h"

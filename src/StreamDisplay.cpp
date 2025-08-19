@@ -4,6 +4,7 @@
 #include "RageDisplay.h"
 #include "ThemeManager.h"
 #include "EnumHelper.h"
+#include "RageUtil_MathFns.h"
 
 #include <cfloat>
 #include <cmath>

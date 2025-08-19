@@ -7,6 +7,7 @@
 #include "RageTexture.h"
 #include "RageTimer.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "ActorUtil.h"
 #include "LuaBinding.h"
 #include "LuaManager.h"

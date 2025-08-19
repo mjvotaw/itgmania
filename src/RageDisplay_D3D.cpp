@@ -2,6 +2,7 @@
 #include "RageDisplay.h"
 #include "RageDisplay_D3D.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageTimer.h"
 #include "RageException.h"

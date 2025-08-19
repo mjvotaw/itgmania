@@ -3,6 +3,7 @@
 #include "ActorFrame.h"
 #include "RageDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageUtil_RandomNumbers.h"
 #include "RageMath.h"
 #include "RageLog.h"

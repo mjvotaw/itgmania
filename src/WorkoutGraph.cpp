@@ -1,6 +1,7 @@
 #include "global.h"
 #include "WorkoutGraph.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "ActorUtil.h"
 #include "Sprite.h"
 #include "Trail.h"

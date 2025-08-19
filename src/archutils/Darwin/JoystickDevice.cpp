@@ -1,6 +1,7 @@
 #include "global.h"
 #include "JoystickDevice.h"
 #include "RageLog.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstdint>
 #include <vector>

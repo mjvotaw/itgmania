@@ -6,9 +6,9 @@ list(APPEND SMDATA_RAGE_UTILS_SRC
             "RageUtil_CharConversions.cpp"
             "RageUtil_FileDB.cpp"
             "RageUtil_LanguageInfo.cpp"
+            "RageUtil_MathFns.cpp"
             "RageUtil_RandomNumbers.cpp"
             "RageUtil_Regex.cpp"
-            "RageUtil_StatsFns.cpp"
             "RageUtil_WorkerThread.cpp")
 
 list(APPEND SMDATA_RAGE_UTILS_HPP
@@ -21,9 +21,9 @@ list(APPEND SMDATA_RAGE_UTILS_HPP
             "RageUtil_Endian.h"
             "RageUtil_FileDB.h"
             "RageUtil_LanguageInfo.h"
+            "RageUtil_MathFns.h"
             "RageUtil_RandomNumbers.h"
             "RageUtil_Regex.h"
-            "RageUtil_StatsFns.h"
             "RageUtil_WorkerThread.h")
 
 source_group("Rage\\\\Utils"

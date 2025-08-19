@@ -31,6 +31,7 @@
 #include "RageInput.h"
 #include "OptionsList.h"
 #include "RageFileManager.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 #include <vector>

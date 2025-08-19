@@ -3,6 +3,7 @@
 #include "ImageCache.h"
 #include "RageDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageSurface_Load.h"
 #include "SongCacheIndex.h"

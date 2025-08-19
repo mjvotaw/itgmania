@@ -3,6 +3,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include "windows.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 
 REGISTER_LIGHTS_DRIVER_CLASS(Win32Parallel);
 

@@ -10,6 +10,7 @@
 #include "CodeDetector.h"
 #include "InputMapper.h"
 #include "PlayerState.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 #include <vector>

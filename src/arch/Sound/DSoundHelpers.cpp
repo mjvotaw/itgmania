@@ -2,6 +2,7 @@
 #include "DSoundHelpers.h"
 #include "PrefsManager.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageSound.h"
 #include "archutils/Win32/DirectXHelpers.h"

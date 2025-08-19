@@ -10,6 +10,7 @@
 #include "SongManager.h"
 #include "ThemeMetric.h"
 #include "ActorUtil.h"
+#include "RageUtil_MathFns.h"
 
 REGISTER_ACTOR_CLASS( FadingBanner );
 

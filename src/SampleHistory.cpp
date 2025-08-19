@@ -2,6 +2,7 @@
 #include "SampleHistory.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 
 #include <cmath>
 

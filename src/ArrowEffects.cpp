@@ -7,6 +7,7 @@
 #include "NoteDisplay.h"
 #include "Song.h"
 #include "RageMath.h"
+#include "RageUtil_MathFns.h"
 #include "ScreenDimensions.h"
 #include "PlayerState.h"
 #include "GameState.h"

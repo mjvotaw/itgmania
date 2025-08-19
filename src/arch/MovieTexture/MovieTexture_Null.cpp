@@ -2,6 +2,7 @@
 #include "RageDisplay.h"
 #include "RageTextureManager.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "MovieTexture_Null.h"
 #include "RageSurface.h"

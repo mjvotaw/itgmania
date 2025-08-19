@@ -11,6 +11,7 @@
 #include "StatsManager.h"
 #include "PlayerState.h"
 #include "MessageManager.h"
+#include "RageUtil_MathFns.h"
 
 #include <cstddef>
 

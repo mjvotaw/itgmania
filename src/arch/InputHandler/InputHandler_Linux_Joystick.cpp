@@ -2,6 +2,7 @@
 #include "InputHandler_Linux_Joystick.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "LinuxInputManager.h"
 #include "RageInputDevice.h" // NUM_JOYSTICKS
 

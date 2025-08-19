@@ -6,6 +6,7 @@
 #include "NoteData.h"
 #include "PlayerState.h"
 #include "RageSoundReader.h"
+#include "RageUtil_MathFns.h"
 
 SoundEffectControl::SoundEffectControl()
 {

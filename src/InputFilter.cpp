@@ -4,6 +4,7 @@
 #include "RageLog.h"
 #include "RageInput.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageThreads.h"
 #include "Preference.h"
 #include "GameInput.h"

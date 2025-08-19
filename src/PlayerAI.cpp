@@ -1,6 +1,7 @@
 #include "global.h"
 #include "PlayerAI.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageUtil_RandomNumbers.h"
 #include "IniFile.h"
 #include "GameState.h"

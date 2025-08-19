@@ -2,6 +2,7 @@
 #include "InputHandler_Linux_Event.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "LinuxInputManager.h"
 #include "GamePreferences.h" //needed for Axis Fix
 

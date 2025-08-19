@@ -4,6 +4,7 @@
 #include "RageDisplay_GLES2.h"
 #include "RageUtil.h"
 #include "RageUtil_Endian.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageTimer.h"
 #include "RageMath.h"

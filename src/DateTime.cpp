@@ -1,6 +1,7 @@
 #include "global.h"
 #include "DateTime.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "EnumHelper.h"
 #include "LuaManager.h"
 #include "LocalizedString.h"

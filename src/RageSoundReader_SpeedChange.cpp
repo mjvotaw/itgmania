@@ -1,6 +1,7 @@
 #include "global.h"
 #include "RageSoundReader_SpeedChange.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 
 #include <cmath>

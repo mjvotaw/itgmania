@@ -5,6 +5,7 @@
 #include "archutils/Win32/GraphicsWindow.h"
 #include "PrefsManager.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "RageLog.h"
 #include "RageDisplay.h"
 #include "LocalizedString.h"

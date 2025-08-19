@@ -3,6 +3,7 @@
 
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_MathFns.h"
 #include "PrefsManager.h"
 #include "archutils/Win32/ErrorStrings.h"
 

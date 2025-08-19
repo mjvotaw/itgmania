@@ -8,6 +8,7 @@
 #include "DisplaySpec.h"
 #include "LocalizedString.h"
 #include "RageTimer.h"
+#include "RageUtil_MathFns.h"
 
 #include "RageDisplay_OGL_Helpers.h"
 using namespace RageDisplay_Legacy_Helpers;

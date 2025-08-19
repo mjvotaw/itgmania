@@ -5,6 +5,7 @@
 #include "ActorUtil.h"
 #include "BitmapText.h"
 #include "XmlFile.h"
+#include "RageUtil_MathFns.h"
 
 const int MinComboSizeToShow = 5;
 
