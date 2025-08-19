@@ -3,6 +3,7 @@
 #include "RageDisplay.h"
 #include "RageDisplay_GLES2.h"
 #include "RageUtil.h"
+#include "RageUtil_Endian.h"
 #include "RageLog.h"
 #include "RageTimer.h"
 #include "RageMath.h"
@@ -11,7 +12,6 @@
 #include "RageSurface.h"
 #include "RageTextureManager.h"
 #include "DisplaySpec.h"
-#include "RageUtil_Endian.h"
 
 #include "arch/LowLevelWindow/LowLevelWindow.h"
 

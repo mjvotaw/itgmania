@@ -4,6 +4,7 @@
 #include "RageSound.h"
 #include "RageLog.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameState.h"
 #include "TimingData.h"
 #include "NotesLoaderSSC.h"
@@ -17,7 +18,6 @@
 #include "LightsManager.h"
 #include "SongUtil.h"
 #include "LuaManager.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include "arch/Sound/RageSoundDriver.h"
 

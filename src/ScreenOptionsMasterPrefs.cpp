@@ -8,6 +8,7 @@
 #include "SongOptions.h"
 #include "RageDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_LanguageInfo.h"
 #include "GameManager.h"
 #include "GameState.h"
 #include "StepMania.h"
@@ -17,7 +18,6 @@
 #include "LocalizedString.h"
 #include "SpecialFiles.h"
 #include "RageLog.h"
-#include "RageUtil_LanguageInfo.h"
 
 #include <vector>
 

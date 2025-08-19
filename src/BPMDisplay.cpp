@@ -1,6 +1,7 @@
 #include "global.h"
 #include "BPMDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameConstantsAndTypes.h"
 #include "GameState.h"
 #include "Course.h"
@@ -10,7 +11,6 @@
 #include "LocalizedString.h"
 #include "Song.h"
 #include "Steps.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cmath>
 #include <climits>

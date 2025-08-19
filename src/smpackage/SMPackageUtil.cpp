@@ -5,11 +5,11 @@
 #include "archutils/Win32/RegistryAccess.h"
 #include "ProductInfo.h"
 #include "RageUtil.h"
+#include "RageUtil_LanguageInfo.h"
 #include "RageFileManager.h"
 #include "resource.h"
 #include "LocalizedString.h"
 #include "arch/Dialog/Dialog.h"
-#include "RageUtil_LanguageInfo.h"
 
 #include <cstddef>
 #include <vector>

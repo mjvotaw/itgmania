@@ -4,6 +4,7 @@
 #include "ScreenManager.h"
 #include "GameManager.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameConstantsAndTypes.h"
 #include "Steps.h"
 #include "PrefsManager.h"
@@ -29,7 +30,6 @@
 #include "CommonMetrics.h"
 #include "ScoreKeeperNormal.h"
 #include "InputEventPlus.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cmath>
 #include <cstddef>

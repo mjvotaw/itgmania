@@ -2,9 +2,9 @@
 #include "RageSurfaceUtils.h"
 #include "RageSurface.h"
 #include "RageUtil.h"
+#include "RageUtil_Endian.h"
 #include "RageLog.h"
 #include "RageFile.h"
-#include "RageUtil_Endian.h"
 
 #include <cmath>
 #include <cstddef>

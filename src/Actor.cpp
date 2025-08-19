@@ -3,6 +3,7 @@
 #include "ActorFrame.h"
 #include "RageDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "RageMath.h"
 #include "RageLog.h"
 #include "XmlFile.h"
@@ -14,7 +15,6 @@
 #include "ActorUtil.h"
 #include "Preference.h"
 #include "GameLoop.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cmath>
 #include <cstddef>

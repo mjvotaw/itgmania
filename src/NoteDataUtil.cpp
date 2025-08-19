@@ -2,6 +2,7 @@
 #include "NoteDataUtil.h"
 #include "NoteData.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "RageLog.h"
 #include "PlayerOptions.h"
 #include "Song.h"
@@ -9,7 +10,6 @@
 #include "GameState.h"
 #include "RadarValues.h"
 #include "TimingData.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cmath>
 #include <cstddef>

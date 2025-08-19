@@ -1,6 +1,7 @@
 #include "global.h"
 #include "Background.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameConstantsAndTypes.h"
 #include "RageTimer.h"
 #include "RageLog.h"
@@ -22,7 +23,6 @@
 #include "BackgroundUtil.h"
 #include "Song.h"
 #include "AutoActor.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cfloat>
 #include <vector>

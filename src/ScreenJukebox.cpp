@@ -9,6 +9,7 @@
 #include "Steps.h"
 #include "ScreenAttract.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "UnlockManager.h"
 #include "Course.h"
 #include "ThemeManager.h"
@@ -21,7 +22,6 @@
 #include "AdjustSync.h"
 #include "SongUtil.h"
 #include "Song.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <vector>
 

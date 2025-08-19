@@ -5,12 +5,12 @@
 #include "RageLog.h"
 #include "InputFilter.h"
 #include "RageUtil.h"
+#include "RageUtil_Regex.h"
 #include "PrefsManager.h"
 #include "RageInput.h"
 #include "SpecialFiles.h"
 #include "LocalizedString.h"
 #include "arch/Dialog/Dialog.h"
-#include "RageUtil_Regex.h"
 
 #include <cstddef>
 #include <vector>

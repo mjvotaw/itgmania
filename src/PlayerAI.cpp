@@ -1,10 +1,10 @@
 #include "global.h"
 #include "PlayerAI.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "IniFile.h"
 #include "GameState.h"
 #include "PlayerState.h"
-#include "RageUtil_RandomNumbers.h"
 
 #define AI_PATH "Data/AI.ini"
 

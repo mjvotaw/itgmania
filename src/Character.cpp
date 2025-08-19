@@ -2,9 +2,9 @@
 #include "Character.h"
 #include "IniFile.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "RageTextureID.h"
 #include "ActorUtil.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <vector>
 

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "GameConstantsAndTypes.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "PrefsManager.h"
 #include "GameManager.h"
 #include "InputMapper.h"
@@ -39,7 +40,6 @@
 #include "GameCommand.h"
 #include "LocalizedString.h"
 #include "AdjustSync.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cmath>
 #include <cstddef>

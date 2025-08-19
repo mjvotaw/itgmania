@@ -1,6 +1,7 @@
 #include "global.h"
 #include "MusicWheel.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "SongManager.h"
 #include "GameManager.h"
 #include "PrefsManager.h"
@@ -22,7 +23,6 @@
 #include "CommonMetrics.h"
 #include "MessageManager.h"
 #include "LocalizedString.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cmath>
 #include <cstddef>

@@ -3,6 +3,7 @@
 #include "GameConstantsAndTypes.h"
 #include "RageDisplay.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "RageMath.h"
 #include "GameState.h"
 #include "Song.h"
@@ -10,7 +11,6 @@
 #include "StatsManager.h"
 #include "PrefsManager.h"
 #include "Model.h"
-#include "RageUtil_RandomNumbers.h"
 
 int Neg1OrPos1();
 

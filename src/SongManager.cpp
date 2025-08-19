@@ -23,6 +23,7 @@
 #include "ProfileManager.h"
 #include "RageFile.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "RageFileManager.h"
 #include "RageLog.h"
 #include "Song.h"
@@ -39,7 +40,6 @@
 #include "UnlockManager.h"
 #include "SpecialFiles.h"
 #include "Group.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cstddef>
 #include <tuple>

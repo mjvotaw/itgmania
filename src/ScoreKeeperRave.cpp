@@ -2,6 +2,7 @@
 #include "ScoreKeeperRave.h"
 #include "ThemeManager.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameState.h"
 #include "Character.h"
 #include "ScreenManager.h"
@@ -9,7 +10,6 @@
 #include "ThemeMetric.h"
 #include "PlayerState.h"
 #include "NoteTypes.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <cstddef>
 

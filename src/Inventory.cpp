@@ -2,6 +2,7 @@
 #include "Inventory.h"
 #include "ThemeManager.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameState.h"
 #include "RageTimer.h"
 #include "PrefsManager.h"
@@ -10,7 +11,6 @@
 #include "StatsManager.h"
 #include "ThemeMetric.h"
 #include "PlayerState.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <vector>
 

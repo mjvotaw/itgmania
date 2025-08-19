@@ -3,6 +3,7 @@
 #include "ScreenOptionsCourseOverview.h"
 #include "ScreenManager.h"
 #include "RageUtil.h"
+#include "RageUtil_RandomNumbers.h"
 #include "GameState.h"
 #include "OptionRowHandler.h"
 #include "ProfileManager.h"
@@ -17,7 +18,6 @@
 #include "PlayerState.h"
 #include "Style.h"
 #include "PrefsManager.h"
-#include "RageUtil_RandomNumbers.h"
 
 #include <vector>
 
