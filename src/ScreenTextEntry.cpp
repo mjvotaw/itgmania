@@ -1,6 +1,7 @@
 #include "global.h"
 #include "ScreenTextEntry.h"
 #include "RageUtil.h"
+#include "RageUtil_ConvertValue.h"
 #include "RageUtil_MathFns.h"
 #include "Preference.h"
 #include "ScreenManager.h"
