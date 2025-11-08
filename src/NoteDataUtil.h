@@ -32,6 +32,8 @@ namespace NoteDataUtil
 	void GetSMNoteDataString( const NoteData &in, RString &notes_out );
 	void SplitCompositeNoteData( const NoteData &in, std::vector<NoteData> &out );
 	void CombineCompositeNoteData( NoteData &out, const std::vector<NoteData> &in );
+
+	char GetTapNoteTypeChar(TapNoteType type, TapNoteSubType subType);
 	/**
 	 * @brief Autogenerate notes from one type to another.
 	 *

@@ -17,7 +17,29 @@ static const char *TechCountsCategoryNames[] = {
 	"Doublesteps"
 };
 
+static const RString ShortTechCountsCategoryNames[] = {
+	"xo",
+	"hxo",
+	"fxo",
+	"fs",
+	"ufs",
+	"dfs",
+	"ss",
+	"ja",
+	"br",
+	"ds"
+};
+
 XToString( TechCountsCategory );
 XToLocalizedString( TechCountsCategory );
 LuaFunction(TechCountsCategoryToLocalizedString, TechCountsCategoryToLocalizedString(Enum::Check<TechCountsCategory>(L, 1)) );
 LuaXType( TechCountsCategory );
+
+RString ShortTechCountsCategoryString(TechCountsCategory t)
+{
+	if(t >= NUM_TechCountsCategory)
+	{
+		return "";
+	}
+	return ShortTechCountsCategoryNames[t];
+}

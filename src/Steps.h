@@ -327,6 +327,8 @@ private:
 	 * @brief What is the maximum specified BPM?
 	 * If this is a range, then min should not be equal to max. */
 	float	specifiedBPMMax;
+	
+	void SaveTechStuffToCsv(std::vector<StepParity::Row> & rows);
 };
 
 #endif

@@ -29,6 +29,7 @@
 #include "NotesLoaderDWI.h"
 #include "NotesLoaderKSF.h"
 #include "NotesLoaderBMS.h"
+#include "CsvFile.h"
 
 #include <algorithm>
 #include <cstddef>
@@ -404,8 +405,52 @@ void Steps::CalculateTechCounts()
 	gen.analyzeNoteData(tempNoteData);
 	TechCounts::CalculateTechCountsFromRows(gen.rows, layout, m_CachedTechCounts[0]);
 	std::fill_n( m_CachedTechCounts + 1, NUM_PLAYERS-1, m_CachedTechCounts[0] );
-
+	
+	SaveTechStuffToCsv(gen.rows);
 	GAMESTATE->SetProcessedTimingData(nullptr);
+}
+
+void Steps::SaveTechStuffToCsv(std::vector<StepParity::Row> & rows)
+{
+	CsvFile csvFile;
+	csvFile.m_vvs.push_back({"second", "beat", "notes", "foot_placement", "tech"});
+	
+	for(auto const &row: rows)
+	{
+		std::vector<RString> csvRow;
+		csvRow.push_back(ssprintf("%.3f", row.second));
+		csvRow.push_back(ssprintf("%.3f", row.beat));
+		
+		RString notesColumns;
+		RString placementColumns;
+		for(int c = 0; c < row.columnCount; c++)
+		{
+			notesColumns.append(1, NoteDataUtil::GetTapNoteTypeChar(row.notes[c].type, row.notes[c].subtype));
+			placementColumns.append(ssprintf("%d", row.columns[c]));
+		}
+		
+		csvRow.push_back(notesColumns);
+		csvRow.push_back(placementColumns);
+		for(int c = 0; c < row.columnCount; c++)
+		{
+			for(auto t: row.notes[c].tech)
+			{
+				csvRow.push_back(ShortTechCountsCategoryString(t));
+			}
+		}
+		csvFile.m_vvs.push_back(csvRow);
+	}
+	
+	RString songName = m_pSong->m_sSongName;
+	RString diff = DifficultyToString(m_Difficulty);
+	RString steps_type = m_StepsTypeStr;
+	
+	RString fileName = ssprintf("Save/note-annotation-csvs/%s_%s_%s.csv", songName.c_str(), steps_type.c_str(), diff.c_str());
+	if(csvFile.WriteFile(fileName) == false)
+	{
+		LOG->Trace("Steps::SaveTechStuffToCsv: Error writing to csv file: %s", csvFile.m_sError.c_str());
+	}
+	
 }
 
 void Steps::CalculateMeasureInfo()

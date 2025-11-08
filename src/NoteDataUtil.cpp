@@ -437,6 +437,32 @@ void NoteDataUtil::GetSMNoteDataString( const NoteData &in, RString &sRet )
 	}
 }
 
+char NoteDataUtil::GetTapNoteTypeChar(TapNoteType type, TapNoteSubType subType)
+{
+	switch( type )
+	{
+	case TapNoteType_Empty:			return '0';
+	case TapNoteType_Tap:			return '1';
+	case TapNoteType_HoldHead:
+		switch( subType )
+		{
+		case TapNoteSubType_Hold:	return '2';
+		case TapNoteSubType_Roll:	return '4';
+		default:
+			FAIL_M(ssprintf("Invalid tap note subtype: %i", subType));
+		}
+		break;
+	case TapNoteType_HoldTail:		return '3';
+	case TapNoteType_Mine:			return 'M';
+	case TapNoteType_Attack:		return 'A';
+	case TapNoteType_AutoKeysound:	return 'K';
+	case TapNoteType_Lift:			return 'L';
+	case TapNoteType_Fake:			return 'F';
+	default:
+		FAIL_M(ssprintf("Invalid tap note type: %i", type));
+	}
+}
+
 void NoteDataUtil::SplitCompositeNoteData( const NoteData &in, std::vector<NoteData> &out )
 {
 	if( !in.IsComposite() )

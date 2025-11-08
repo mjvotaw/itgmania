@@ -20,10 +20,10 @@ public:
 
 	typedef std::vector<RString> StringVector;
 	std::vector<StringVector> m_vvs;
-
+	mutable RString m_sError;
 private:
 	RString m_sPath;
-	mutable RString m_sError;
+	
 };
 
 #endif

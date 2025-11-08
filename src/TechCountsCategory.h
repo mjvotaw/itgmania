@@ -20,4 +20,5 @@ enum TechCountsCategory
 const RString& TechCountsCategoryToString( TechCountsCategory tnst );
 const RString& TechCountsCategoryToLocalizedString( TechCountsCategory tnst );
 
+RString ShortTechCountsCategoryString(TechCountsCategory t);
 #endif
