@@ -1152,12 +1152,12 @@ void TimingData::NoteRowToMeasureAndBeat(
 }
 
 std::vector<std::string> TimingData::ToVectorString(
-    TimingSegmentType tst, int dec) const {
+    TimingSegmentType tst) const {
   const std::vector<TimingSegment*> segs = GetTimingSegments(tst);
   std::vector<std::string> ret;
 
   for (unsigned i = 0; i < segs.size(); i++) {
-    ret.push_back(segs[i]->ToString(dec));
+    ret.push_back(segs[i]->ToString());
   }
   return ret;
 }

@@ -566,8 +566,7 @@ class TimingData {
   float m_fBeat0GroupOffsetInSeconds;
 
   // XXX: this breaks encapsulation. get rid of it ASAP
-  std::vector<std::string> ToVectorString(
-      TimingSegmentType tst, int dec = 6) const;
+  std::vector<std::string> ToVectorString(TimingSegmentType tst) const;
 
  protected:
   // don't call this directly; use the derived-type overloads.

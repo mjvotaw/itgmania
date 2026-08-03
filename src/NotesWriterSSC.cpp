@@ -26,6 +26,7 @@
 #include "TechCounts.h"
 #include "TimingData.h"
 #include "TimingSegments.h"
+#include "fmt/format.h"
 #include "global.h"
 
 /**
@@ -56,25 +57,25 @@ struct TimingTagWriter {
 
   void Write(const int row, const char* value) {
     m_pvsLines->push_back(
-        m_sNext + ssprintf("%.6f=%s", NoteRowToBeat(row), value));
+        m_sNext + fmt::format("{}={}", NoteRowToBeat(row), value));
     m_sNext = ",";
   }
 
   void Write(const int row, const float value) {
-    Write(row, ssprintf("%.6f", value).c_str());
+    Write(row, fmt::format("{}", value).c_str());
   }
   void Write(const int row, const int value) {
-    Write(row, ssprintf("%d", value).c_str());
+    Write(row, fmt::format("{}", value).c_str());
   }
   void Write(const int row, const int a, const int b) {
-    Write(row, ssprintf("%d=%d", a, b).c_str());
+    Write(row, fmt::format("{}={}", a, b).c_str());
   }
   void Write(const int row, const float a, const float b) {
-    Write(row, ssprintf("%.6f=%.6f", a, b).c_str());
+    Write(row, fmt::format("{}={}", a, b).c_str());
   }
   void Write(
       const int row, const float a, const float b, const unsigned short c) {
-    Write(row, ssprintf("%.6f=%.6f=%hd", a, b, c).c_str());
+    Write(row, fmt::format("{}={}={}", a, b, c).c_str());
   }
 
   void Init(const std::string sTag) { m_sNext = "#" + sTag + ":"; }
@@ -207,38 +208,37 @@ static void GetTimingTags(
 static void WriteTimingTags(
     RageFile& f, const TimingData& timing, bool bIsSong = false) {
   f.PutLine(ssprintf(
-      "#BPMS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_BPM, 6)).c_str()));
+      "#BPMS:%s;", join(",\r\n", timing.ToVectorString(SEGMENT_BPM)).c_str()));
   f.PutLine(ssprintf(
       "#STOPS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_STOP, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_STOP)).c_str()));
   f.PutLine(ssprintf(
       "#DELAYS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_DELAY, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_DELAY)).c_str()));
   f.PutLine(ssprintf(
       "#WARPS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_WARP, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_WARP)).c_str()));
   f.PutLine(ssprintf(
       "#TIMESIGNATURES:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_TIME_SIG, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_TIME_SIG)).c_str()));
   f.PutLine(ssprintf(
       "#TICKCOUNTS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_TICKCOUNT, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_TICKCOUNT)).c_str()));
   f.PutLine(ssprintf(
       "#COMBOS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_COMBO, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_COMBO)).c_str()));
   f.PutLine(ssprintf(
       "#SPEEDS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_SPEED, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_SPEED)).c_str()));
   f.PutLine(ssprintf(
       "#SCROLLS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_SCROLL, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_SCROLL)).c_str()));
   f.PutLine(ssprintf(
       "#FAKES:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_FAKE, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_FAKE)).c_str()));
   f.PutLine(ssprintf(
       "#LABELS:%s;",
-      join(",\r\n", timing.ToVectorString(SEGMENT_LABEL, 6)).c_str()));
+      join(",\r\n", timing.ToVectorString(SEGMENT_LABEL)).c_str()));
 }
 
 /**
@@ -311,11 +311,12 @@ static void WriteGlobalTags(RageFile& f, const Song& out) {
       break;
     case DISPLAY_BPM_SPECIFIED:
       if (out.m_fSpecifiedBPMMin == out.m_fSpecifiedBPMMax) {
-        f.PutLine(ssprintf("#DISPLAYBPM:%.6f;", out.m_fSpecifiedBPMMin));
+        f.PutLine(fmt::format("#DISPLAYBPM:{};", out.m_fSpecifiedBPMMin));
       } else {
-        f.PutLine(ssprintf(
-            "#DISPLAYBPM:%.6f:%.6f;", out.m_fSpecifiedBPMMin,
-            out.m_fSpecifiedBPMMax));
+        f.PutLine(
+            fmt::format(
+                "#DISPLAYBPM:{}:{};", out.m_fSpecifiedBPMMin,
+                out.m_fSpecifiedBPMMax));
       }
       break;
     case DISPLAY_BPM_RANDOM:
